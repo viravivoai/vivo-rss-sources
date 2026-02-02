@@ -157,6 +157,20 @@
     border-radius: 4px;
     font-size: 13px;
   }
+  .export-btn {
+    padding: 8px 16px;
+    background: #3a3a3a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  .export-btn:hover {
+    background: #555;
+  }
   .dataTables_length select {
     padding: 4px 8px;
     border: 1px solid #ccc;
@@ -197,6 +211,7 @@
     <option value="Longevity">Longevity</option>
     <option value="Research">Research</option>
   </select>
+  <button id="exportBtn" class="export-btn">⬇ Download Excel</button>
 </div>
 
 <div class="table-wrap">
@@ -218,6 +233,7 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/3.0.4/js/dataTables.responsive.min.js"></script>
 <script>
@@ -575,6 +591,33 @@ $(document).ready(function() {
   // Category filter
   $('#categoryFilter').on('change', function() {
     table.column(1).search(this.value).draw();
+  });
+
+  // Excel export
+  $('#exportBtn').on('click', function() {
+    const exportData = feeds.map(f => ({
+      'Source Name': f.name,
+      'Website URL': f.url,
+      'Category': f.category,
+      'RSS Feed URL': f.rss || '',
+      'Notes': f.notes
+    }));
+    
+    const ws = XLSX.utils.json_to_sheet(exportData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'RSS Sources');
+    
+    // Auto-size columns
+    const colWidths = [
+      { wch: 30 },  // Source Name
+      { wch: 50 },  // Website URL
+      { wch: 18 },  // Category
+      { wch: 55 },  // RSS Feed URL
+      { wch: 80 }   // Notes
+    ];
+    ws['!cols'] = colWidths;
+    
+    XLSX.writeFile(wb, 'Vivo_RSS_Sources.xlsx');
   });
 });
 </script>
