@@ -74,9 +74,8 @@
     flex-shrink: 0;
   }
   .dot-senior { background: #333; }
-  .dot-strength { background: #666; }
-  .dot-longevity { background: #999; }
-  .dot-research { background: #bbb; }
+  .dot-longevity { background: #777; }
+  .dot-research { background: #aaa; }
   .stat-count {
     font-weight: 700;
     color: #333;
@@ -119,9 +118,8 @@
     text-transform: uppercase;
   }
   .cat-senior { background: #333; color: #fff; }
-  .cat-strength { background: #666; color: #fff; }
-  .cat-longevity { background: #999; color: #fff; }
-  .cat-research { background: #bbb; color: #333; }
+  .cat-longevity { background: #777; color: #fff; }
+  .cat-research { background: #aaa; color: #333; }
   a { color: #333; }
   a:hover { color: #000; }
   .rss-link {
@@ -144,12 +142,6 @@
   }
   .source-name {
     font-weight: 600;
-  }
-  .source-desc {
-    font-size: 12px;
-    color: #666;
-    margin-top: 4px;
-    line-height: 1.4;
   }
   .dataTables_filter input {
     padding: 6px 10px;
@@ -192,12 +184,11 @@
 
 <div class="header">
   <h1>Vivo RSS Feed Sources</h1>
-  <p>Curated RSS feeds for senior fitness, strength training, longevity, and healthy aging research</p>
+  <p>Curated RSS feeds for senior fitness, longevity, and healthy aging research</p>
 </div>
 
 <div class="stats">
   <div class="stat-item"><span class="stat-dot dot-senior"></span> Senior Fitness <span class="stat-count" id="count-senior">0</span></div>
-  <div class="stat-item"><span class="stat-dot dot-strength"></span> Strength Training <span class="stat-count" id="count-strength">0</span></div>
   <div class="stat-item"><span class="stat-dot dot-longevity"></span> Longevity <span class="stat-count" id="count-longevity">0</span></div>
   <div class="stat-item"><span class="stat-dot dot-research"></span> Research <span class="stat-count" id="count-research">0</span></div>
 </div>
@@ -207,7 +198,6 @@
   <select id="categoryFilter">
     <option value="">All Categories</option>
     <option value="Senior Fitness">Senior Fitness</option>
-    <option value="Strength Training">Strength Training</option>
     <option value="Longevity">Longevity</option>
     <option value="Research">Research</option>
   </select>
@@ -238,21 +228,7 @@
 <script src="https://cdn.datatables.net/responsive/3.0.4/js/dataTables.responsive.min.js"></script>
 <script>
 const feeds = [
-  // Senior Fitness / Over 50
-  {
-    name: "Fit Apprentice (Hashi Mashi)",
-    url: "https://hashimashi.com/blog/",
-    category: "Senior Fitness",
-    rss: "https://hashimashi.com/feed/",
-    notes: "Getting fit after 50. Simple and effective plans for men and women who think it's too late."
-  },
-  {
-    name: "LivingBetter50",
-    url: "https://www.livingbetter50.com/category/health-fitness/",
-    category: "Senior Fitness",
-    rss: "https://www.livingbetter50.com/category/health-fitness/feed/",
-    notes: "Focuses on positive attributes of aging. Encourages healthier choices through content and education."
-  },
+  // Senior Fitness
   {
     name: "Baby Boomster",
     url: "https://babyboomster.com/category/wellness/fitness-over-50/",
@@ -261,46 +237,11 @@ const feeds = [
     notes: "Expert-guided workouts and wellness tips for women over 50."
   },
   {
-    name: "Lori Michiel Fitness",
-    url: "https://lorimichielfitness.com/fitness-blog-for-active-adults-former-athletes-and-seniors/",
+    name: "Viva Fifty",
+    url: "https://www.vivafifty.com/wellness/",
     category: "Senior Fitness",
-    rss: "https://lorimichielfitness.com/feed/",
-    notes: "Certified trainers specializing in active adults and seniors. Helping people fulfill their physical potential."
-  },
-  {
-    name: "Muscle & Fitness - Over 50",
-    url: "https://www.muscleandfitness.com/tag/over-50/",
-    category: "Senior Fitness",
-    rss: "https://www.muscleandfitness.com/tag/over-50/feed/",
-    notes: "Major fitness publication with dedicated over-50 content. Workouts, nutrition, supplements."
-  },
-  {
-    name: "Yes2Next",
-    url: "https://yes2next.com/fitness-joy",
-    category: "Senior Fitness",
-    rss: "https://yes2next.com/fitness-joy?format=rss",
-    notes: "Created by ACE-certified personal trainer with senior fitness specialty. Fitness and health inspiration."
-  },
-  {
-    name: "Women Living Well After 50",
-    url: "https://www.womenlivingwellafter50.com.au/category/0ver-50s-health-wellness/",
-    category: "Senior Fitness",
-    rss: "https://www.womenlivingwellafter50.com.au/category/0ver-50s-health-wellness/feed/",
-    notes: "Tips for healthy active lifestyle in midlife and beyond. Exercise, fitness, diet, yoga."
-  },
-  {
-    name: "Becoming Elli",
-    url: "https://becomingelli.com/",
-    category: "Senior Fitness",
-    rss: "https://becomingelli.com/feed/",
-    notes: "Stories and health tips for women over 50. Focus on gaining strength and having fun."
-  },
-  {
-    name: "Fit Is a Feminist Issue",
-    url: "https://fitisafeministissue.com/category/fitness/",
-    category: "Senior Fitness",
-    rss: "https://fitisafeministissue.com/category/fitness/feed/",
-    notes: "Two women set goal to be fittest by age 50. Long-running blog since 2012."
+    rss: "https://www.vivafifty.com/wellness/feed/",
+    notes: "Fitness, nutrition, yoga for 50+. Published author and fitness enthusiast. 97K Facebook followers."
   },
   {
     name: "Fitting Fitness In",
@@ -317,100 +258,21 @@ const feeds = [
     notes: "Dr. Ryan Seifert helps adults over 50 become more active without pain pills or surgery."
   },
   {
-    name: "Viva Fifty",
-    url: "https://www.vivafifty.com/wellness/",
+    name: "Better Health While Aging",
+    url: "https://betterhealthwhileaging.net/",
     category: "Senior Fitness",
-    rss: "https://www.vivafifty.com/wellness/feed/",
-    notes: "Fitness, nutrition, yoga for 50+. Published author and fitness enthusiast. 97K Facebook followers."
+    rss: "https://betterhealthwhileaging.net/feed/",
+    notes: "Practical info for aging health & caregivers. Hospital delirium, exercise for balance/strength, BP treatment for seniors."
   },
   {
-    name: "40+ Fitness Podcast",
-    url: "https://40plusfitnesspodcast.com/",
+    name: "AARP Health",
+    url: "https://www.aarp.org/health/",
     category: "Senior Fitness",
-    rss: "https://feeds.buzzsprout.com/2137450.rss",
-    notes: "Weight training and fitness for women in perimenopause & menopause. Muscle essential for independence."
-  },
-
-  // Strength Training
-  {
-    name: "StrongFirst",
-    url: "https://www.strongfirst.com/blog/",
-    category: "Strength Training",
-    rss: "https://www.strongfirst.com/blog/feed/",
-    notes: "Founded by Pavel Tsatsouline. Kettlebell, barbell, and bodyweight training. Global strength education."
-  },
-  {
-    name: "Starting Strength",
-    url: "https://startingstrength.com/article",
-    category: "Strength Training",
-    rss: "https://startingstrength.com/rss.rss",
-    notes: "Mark Rippetoe's system. Safe, efficient strength improvement using basic barbell exercises."
-  },
-  {
-    name: "Girls Gone Strong",
-    url: "https://www.girlsgonestrong.com/resources/",
-    category: "Strength Training",
-    rss: "https://www.girlsgonestrong.com/feed/",
-    notes: "World's best resource for women's health, wellness, training. 364K Facebook followers."
-  },
-  {
-    name: "Burn The Fat Blog",
-    url: "https://www.burnthefatblog.com/category/weight-training/",
-    category: "Strength Training",
-    rss: "https://www.burnthefatblog.com/category/weight-training/feed/",
-    notes: "Tom Venuto - drug-free approach to muscle training. Help millions get leaner and stronger."
-  },
-  {
-    name: "Original Strength",
-    url: "https://originalstrength.net/blog/",
-    category: "Strength Training",
-    rss: "https://originalstrength.net/blog/rss",
-    notes: "Foundation for all other strength training. Physical restoration and life improvement systems."
-  },
-  {
-    name: "Fitness 4 Back Pain",
-    url: "https://fitness4backpain.com/blog/",
-    category: "Strength Training",
-    rss: "https://fitness4backpain.com/feed/",
-    notes: "Helps chronic back pain sufferers build trust in their body through strategic exercise."
-  },
-  {
-    name: "Dr. John Rusin",
-    url: "https://drjohnrusin.com/category/strength-training/",
-    category: "Strength Training",
-    rss: "https://drjohnrusin.com/category/strength-training/feed/",
-    notes: "Strength and conditioning coach specializing in sports performance physical therapy and rehab."
-  },
-  {
-    name: "NaturalStrength.com",
-    url: "https://www.naturalstrength.com/",
-    category: "Strength Training",
-    rss: "https://feeds.feedburner.com/Naturalstrengthcom-StrengthTrainingThinkTank",
-    notes: "Drug-free strength training information. Weight training, powerlifting, bodybuilding, iron game history."
-  },
-  {
-    name: "Volt Athletics",
-    url: "https://blog.voltathletics.com/home",
-    category: "Strength Training",
-    rss: "https://feeds.feedburner.com/volt-blog",
-    notes: "Expert strength and conditioning coaches on training, nutrition, sport performance."
+    rss: "https://www.aarp.org/health/feed/",
+    notes: "Health news for 50+. Medicare, healthy living, conditions, treatments, prescriptions. Massive reach."
   },
 
   // Longevity
-  {
-    name: "Peter Attia",
-    url: "https://peterattiamd.com/newsletter/",
-    category: "Longevity",
-    rss: "https://peterattiamd.com/feed/",
-    notes: "Physician focusing on applied science of longevity. Lifespan and healthspan optimization. 1.6M Instagram followers."
-  },
-  {
-    name: "Lifespan.io",
-    url: "https://www.lifespan.io/",
-    category: "Longevity",
-    rss: "https://www.lifespan.io/feed/",
-    notes: "Non-profit supporting technologies to end age-related diseases. Daily aging research news."
-  },
   {
     name: "Fight Aging!",
     url: "https://www.fightaging.org/",
@@ -418,50 +280,8 @@ const feeds = [
     rss: "https://www.fightaging.org/feed",
     notes: "Healthy life extension and rejuvenation biotechnology. Running since 2002. Weekly newsletter."
   },
-  {
-    name: "Longevity.Technology",
-    url: "https://longevity.technology/",
-    category: "Longevity",
-    rss: "https://longevity.technology/feed/",
-    notes: "Daily news on antiaging, biotech, research, investment, supplements, rejuvenation therapies."
-  },
-  {
-    name: "NOVOS Labs",
-    url: "https://novoslabs.com/live-longer-slow-aging-life-extension-blog/",
-    category: "Longevity",
-    rss: "https://novoslabs.com/live-longer-slow-aging-life-extension-blog/feed/",
-    notes: "Longevity scientists from Harvard, MIT. Practical tips on slowing aging."
-  },
-  {
-    name: "Longevity.Science",
-    url: "https://longevity.science/",
-    category: "Longevity",
-    rss: "https://longevity.science/feed/",
-    notes: "Research, technology and behavioral interventions to hack healthspan."
-  },
-  {
-    name: "Anti-Aging Firewalls",
-    url: "https://www.anti-agingfirewalls.com/",
-    category: "Longevity",
-    rss: "https://www.anti-agingfirewalls.com/feed/",
-    notes: "Sciences and practices of living healthily very long - perhaps hundreds of years."
-  },
-  {
-    name: "Princeton Longevity Center",
-    url: "https://princetonlongevitycenter.com/news/",
-    category: "Longevity",
-    rss: "https://princetonlongevitycenter.com/feed/",
-    notes: "Next-generation medical facility. Advanced preventive medicine programs."
-  },
-  {
-    name: "Longevity by Design Podcast",
-    url: "https://insidetracker.com/",
-    category: "Longevity",
-    rss: "https://rss.buzzsprout.com/1758878.rss",
-    notes: "Features experts like Dr. Eric Verdin (Buck Institute). Therapeutic plasma exchange research."
-  },
 
-  // Research & Science
+  // Research
   {
     name: "ScienceDaily - Healthy Aging",
     url: "https://www.sciencedaily.com/news/health_medicine/healthy_aging/",
@@ -505,48 +325,19 @@ const feeds = [
     notes: "Neurology, psychology, brain science, mental health research related to longevity."
   },
   {
-    name: "ACE Fitness",
-    url: "https://www.acefitness.org/about-ace/rss/",
-    category: "Research",
-    rss: "https://www.acefitness.org/education-and-resources/professional/feed/",
-    notes: "American Council on Exercise. Evidence-based fitness information and certifications."
-  },
-  {
-    name: "Better Health While Aging",
-    url: "https://betterhealthwhileaging.net/",
-    category: "Senior Fitness",
-    rss: "https://betterhealthwhileaging.net/feed/",
-    notes: "Practical info for aging health & caregivers. Hospital delirium, exercise for balance/strength, BP treatment for seniors. Cites Peter Attia."
-  },
-  {
-    name: "AARP Health",
-    url: "https://www.aarp.org/health/",
-    category: "Senior Fitness",
-    rss: "https://www.aarp.org/health/feed/",
-    notes: "Health news for 50+. Medicare, healthy living, conditions, treatments, prescriptions. Massive reach."
-  },
-  {
     name: "AARP International",
     url: "https://www.aarpinternational.org/",
     category: "Research",
     rss: "https://www.aarpinternational.org/home/rss-feeds",
     notes: "Global aging policies, research, and initiatives supporting older adults worldwide."
-  },
-  {
-    name: "Frontiers in Psychiatry - Aging",
-    url: "https://www.frontiersin.org/journals/psychiatry/sections/aging-psychiatry",
-    category: "Research",
-    rss: "https://www.frontiersin.org/journals/psychiatry/rss",
-    notes: "Open-access peer-reviewed research. Mental health, cognitive aging, neuropsychiatry."
   }
 ];
 
 $(document).ready(function() {
   // Count by category
-  const counts = { 'Senior Fitness': 0, 'Strength Training': 0, 'Longevity': 0, 'Research': 0 };
+  const counts = { 'Senior Fitness': 0, 'Longevity': 0, 'Research': 0 };
   feeds.forEach(f => counts[f.category]++);
   $('#count-senior').text(counts['Senior Fitness']);
-  $('#count-strength').text(counts['Strength Training']);
   $('#count-longevity').text(counts['Longevity']);
   $('#count-research').text(counts['Research']);
 
@@ -563,7 +354,6 @@ $(document).ready(function() {
         data: 'category',
         render: function(data) {
           const cls = data === 'Senior Fitness' ? 'cat-senior' :
-                      data === 'Strength Training' ? 'cat-strength' :
                       data === 'Longevity' ? 'cat-longevity' : 'cat-research';
           return `<span class="category-badge ${cls}">${data}</span>`;
         }
@@ -580,7 +370,7 @@ $(document).ready(function() {
       { data: 'notes' }
     ],
     order: [[1, 'asc'], [0, 'asc']],
-    pageLength: 50,
+    pageLength: 25,
     responsive: true,
     language: {
       search: "Search:",
